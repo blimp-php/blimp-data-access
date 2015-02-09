@@ -12,19 +12,12 @@
         }
     ],
     "require": {
-        "blimp/blimp-base": "@dev",
+        "pimple/pimple": "~3.0",
         "gedmo/doctrine-extensions": "2.3.*"
     },
     "autoload": {
         "psr-4": {
             "Blimp\\DataAccess\\": "src"
         }
-    },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "../blimp-base"
-        }
-    ]
+    }
 }
