@@ -52,10 +52,11 @@
             "source": {
                 "type": "git",
                 "url": "../blimp-base",
-                "reference": "46325020926f7b8fc3e0b9caec85ba7c91447365"
+                "reference": "4b7eb73e53f7e506bf368af90a9a3be9030b7f95"
             },
             "require": {
                 "pimple/pimple": "~3.0",
+                "psr/log": "~1.0",
                 "symfony/config": "2.5.*",
                 "symfony/yaml": "2.5.*"
             },
@@ -80,7 +81,7 @@
                 }
             ],
             "description": "Blimp framework",
-            "time": "2015-02-09 16:14:07"
+            "time": "2015-02-09 16:25:24"
         },
         {
             "name": "doctrine/annotations",
@@ -603,6 +604,49 @@
                 "dependency injection"
             ],
             "time": "2015-01-26 16:18:50"
+        },
+        {
+            "name": "psr/log",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/1af1529b49a6e065ae6802e70192aba35d79b7d8",
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2015-02-05 09:32:11"
         },
         {
             "name": "symfony/config",
