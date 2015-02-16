@@ -12,12 +12,18 @@
         }
     ],
     "require": {
+        "php": ">=5.4.0",
         "pimple/pimple": "~3.0",
         "gedmo/doctrine-extensions": "2.3.*"
     },
     "autoload": {
         "psr-4": {
             "Blimp\\DataAccess\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
         }
     }
 }
