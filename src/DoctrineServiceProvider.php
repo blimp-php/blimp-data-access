@@ -35,6 +35,10 @@ class DoctrineServiceProvider implements ServiceProviderInterface {
             $timestampableListener->setAnnotationReader($annotation_reader);
             $evm->addEventSubscriber($timestampableListener);
 
+            $blameableListener = new DeferredBlameableListener();
+            $blameableListener->setApi($api);
+            $evm->addEventSubscriber($blameableListener);
+
             $ipTraceableListener = new IpTraceableListener();
             $ipTraceableListener->setAnnotationReader($annotation_reader);
             $evm->addEventSubscriber($ipTraceableListener);
