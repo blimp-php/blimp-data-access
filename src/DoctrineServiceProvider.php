@@ -6,7 +6,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\FileCacheReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\EventManager;
-use Gedmo\DoctrineExtensions;
+use Gedmo\Translatable\TranslatableListener;
 use Gedmo\IpTraceable\IpTraceableListener;
 use Gedmo\Timestampable\TimestampableListener;
 use Pimple\Container;
@@ -38,6 +38,13 @@ class DoctrineServiceProvider implements ServiceProviderInterface {
             $blameableListener = new DeferredBlameableListener();
             $blameableListener->setApi($api);
             $evm->addEventSubscriber($blameableListener);
+
+            $translatableListener = new TranslatableListener();
+            // TODO Read default local from somewhere
+            $translatableListener->setTranslatableLocale('pt-PT');
+            $translatableListener->setDefaultLocale('pt-PT');
+            $translatableListener->setAnnotationReader($annotation_reader);
+            $evm->addEventSubscriber($translatableListener);
 
             $ipTraceableListener = new IpTraceableListener();
             $ipTraceableListener->setAnnotationReader($annotation_reader);
@@ -133,7 +140,5 @@ class DoctrineServiceProvider implements ServiceProviderInterface {
 
             return $cache;
         });
-
-        DoctrineExtensions::registerAnnotations();
     }
 }
