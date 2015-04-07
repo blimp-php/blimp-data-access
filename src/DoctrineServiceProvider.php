@@ -26,6 +26,17 @@ class DoctrineServiceProvider implements ServiceProviderInterface {
             );
         };
 
+        $api['dataaccess.doctrine.translatable.listener'] = function ($api) {
+            $translatableListener = new TranslatableListener();
+            // TODO Read default local from somewhere
+            $translatableListener->setTranslatableLocale('pt-PT');
+            $translatableListener->setTranslationFallback(true);
+            $translatableListener->setDefaultLocale('pt-PT');
+            $translatableListener->setAnnotationReader($api['dataaccess.doctrine.annotation.reader']);
+
+            return $translatableListener;
+        };
+
         $api['dataaccess.doctrine.event_manager'] = function ($api) {
             $annotation_reader = $api['dataaccess.doctrine.annotation.reader'];
 
@@ -39,12 +50,7 @@ class DoctrineServiceProvider implements ServiceProviderInterface {
             $blameableListener->setApi($api);
             $evm->addEventSubscriber($blameableListener);
 
-            $translatableListener = new TranslatableListener();
-            // TODO Read default local from somewhere
-            $translatableListener->setTranslatableLocale('pt-PT');
-            $translatableListener->setDefaultLocale('pt-PT');
-            $translatableListener->setAnnotationReader($annotation_reader);
-            $evm->addEventSubscriber($translatableListener);
+            $evm->addEventSubscriber($api['dataaccess.doctrine.translatable.listener']);
 
             $ipTraceableListener = new IpTraceableListener();
             $ipTraceableListener->setAnnotationReader($annotation_reader);
